@@ -1,0 +1,178 @@
+--------------------------------------------------------------------------
+File & Directory Commands
+Command	Purpose
+--------------------------------------------------------------------------
+
+pwd	Show current directory
+ls	List files
+ls -l	Detailed listing
+ls -a	Show hidden files
+cd	Change directory
+mkdir	Create directory
+rmdir	Remove empty directory
+rm	Remove files/directories
+cp	Copy files
+mv	Move/rename files
+touch	Create empty file
+cat	Display file contents
+less	View file page by page
+more	View file
+head	First lines of file
+tail	Last lines of file
+tail -f	Follow log file
+find	Search files
+locate	Fast file search
+which	Find command path
+whereis	Locate binaries/source/man pages
+file	Identify file type
+stat	File details
+tree	Directory structure
+du	Directory size
+df -h	Disk usage
+basename	Extract filename
+dirname	Extract directory path
+
+
+---------------------------------------------------------------------------------------
+Permission Values
+---------------------------------------------------------------------------------------
+Permission	Value
+Read (r)	4
+Write (w)	2
+Execute (x)	1
+
+Examples:
+
+Mode	Meaning
+777	Full access
+755	Owner full, others read/execute
+644	Owner read/write, others read
+600	Owner only
+
+chmod 755 script.sh
+chmod +x script.sh
+chmod -R 755 directory
+
+----------------------------------------------------------------------------------
+change ownership and group
+----------------------------------------------------------------------------------
+chown user file
+chown user:group file
+sudo chgrp -R new_group_name /path/to/directory
+
+
+----------------------------------------------------------------------------------
+Add existing user to anther group and remove user from the group
+----------------------------------------------------------------------------------
+usermod -aG groupName user
+gpasswd -d user groupName
+
+
+----------------------------------------------------------------------------------
+add user and delete user
+----------------------------------------------------------------------------------
+adduser username
+deluser username
+passwd -> for change password
+su -> switch user
+last -> login log
+id -> show id of user
+
+
+usermod -L usernamem -> lock user account
+usermod -U userName  -> unlock user accont
+
+----------------------------------------------------------------------------------
+add group and delete group
+----------------------------------------------------------------------------------
+addgroup groupname
+delgroup groupname
+groups username -> show all groups for user
+
+----------------------------------------------------------------------------------
+import etc folders
+----------------------------------------------------------------------------------
+/etc/passwd
+/etc/shadow
+/etc/group
+/etc/gshadow
+
+------------------------------------------------------------------------------------
+find running port and procss PID monitoring and kill
+------------------------------------------------------------------------------------
+lsof -i :8080
+ps -a
+htop 
+top
+
+--------------------------------------------------------------------------------------
+network commands
+--------------------------------------------------------------------------------------
+netcat
+ping
+curl
+wget
+ssh user@server
+telnet
+nmap
+
+ssh user@server
+scp file.txt user@server:/tmp
+rsync -av source/ destination/
+ssh-keygen
+
+------------------------------------------------------------------------------------
+service management
+----------------------------------------------------------------------------------
+
+service --satus-all
+service bluetooth status
+service bluetooth start
+service bluetooth restart
+
+
+systemctl start nginx
+systemctl stop nginx
+systemctl restart nginx
+systemctl status nginx
+systemctl enable nginx
+
+-------------------------------------------------------------------------------------
+file manipulation commands
+-------------------------------------------------------------------------------------
+grep
+egrep
+awk
+sed
+cut
+sort
+uniq
+wc
+tr
+xargs
+tee
+paste
+join
+
+------------------------------------------------------------------------------------------
+disk management
+------------------------------------------------------------------------------------------
+df -h
+du -sh *
+lsblk
+blkid
+fdisk -l
+mount
+umount
+
+cat file.txt | grep 'search' 
+
+--------------------------------------------------------------------------------------------
+cron tab
+---------------------------------------------------------------------------------------------
+
+crontab -e
+crontab -l
+crontab -r
+
+
