@@ -51,6 +51,11 @@ Mode	Meaning
 
 chmod 755 script.sh
 chmod +x script.sh
+
+chown g-rwx fileName // remove permission for group
+chown o-rwx filename // remove permission for others
+chown u+rwx filename
+ 
 chmod -R 755 directory
 
 ----------------------------------------------------------------------------------
