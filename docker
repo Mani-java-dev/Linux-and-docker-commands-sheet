@@ -1,0 +1,346 @@
+# 1. Download the Alpine Linux image from Docker Hub
+docker pull alpine
+
+# 2. Verify that the image was downloaded
+docker images
+
+# 3. Create and start a container named "myalpine"
+#    -i = interactive mode
+#    -t = terminal
+docker run -it --name myalpine alpine
+
+# 4. Inside the container, check the OS information
+cat /etc/os-release
+
+# 5. Exit the container
+exit
+
+# 6. View all containers (running and stopped)
+docker ps -a
+
+# 7. Start the stopped container and attach to its terminal
+docker start -ai myalpine
+
+# 8. Exit again when finished
+exit
+
+# 9. Run a container in the background
+#    This keeps the container alive by running an infinite sleep loop
+docker run -dit --name alpine-bg alpine sh -c "while true; do sleep 3600; done"
+
+# 10. Check running containers
+docker ps
+
+# 11. Open a shell inside the running background container
+docker exec -it alpine-bg sh
+
+# 12. Exit the shell (container keeps running)
+exit
+
+# 13. Stop the background container
+docker stop alpine-bg
+
+# 14. Start the background container again
+docker start alpine-bg
+
+# 15. View detailed information about the container
+docker inspect alpine-bg
+
+# 16. Remove the container (must be stopped first)
+docker rm alpine-bg
+
+# 17. Remove the image
+docker rmi alpine
+
+
+###############################################################################
+# DOCKER INSTALLATION & VERSION
+###############################################################################
+
+# Check Docker version
+docker --version
+
+# Detailed version information
+docker version
+
+# Show Docker system information
+docker info
+
+
+###############################################################################
+# IMAGES
+###############################################################################
+
+# Download an image from Docker Hub
+docker pull alpine
+
+# List downloaded images
+docker images
+
+# Search images on Docker Hub
+docker search nginx
+
+# Remove an image
+docker rmi alpine
+
+# Remove unused images
+docker image prune
+
+# Remove all unused images
+docker image prune -a
+
+
+###############################################################################
+# CONTAINERS
+###############################################################################
+
+# Create and start a container interactively
+docker run -it alpine
+
+# Create and start a named container
+docker run -it --name myalpine alpine
+
+# Run container in background (detached mode)
+docker run -d nginx
+
+# Run container with a custom name
+docker run -d --name mynginx nginx
+
+# List running containers
+docker ps
+
+# List all containers (running + stopped)
+docker ps -a
+
+# Start a stopped container
+docker start myalpine
+
+# Start and attach to container
+docker start -ai myalpine
+
+# Stop a running container
+docker stop myalpine
+
+# Restart a container
+docker restart myalpine
+
+# Pause a container
+docker pause myalpine
+
+# Unpause a container
+docker unpause myalpine
+
+# Kill a container immediately
+docker kill myalpine
+
+# Remove a stopped container
+docker rm myalpine
+
+# Force remove a running container
+docker rm -f myalpine
+
+# Rename a container
+docker rename oldname newname
+
+
+###############################################################################
+# ACCESSING CONTAINERS
+###############################################################################
+
+# Open shell in running container
+docker exec -it myalpine sh
+
+# Open bash shell (if available)
+docker exec -it mycontainer bash
+
+# Attach to container's main process
+docker attach myalpine
+
+# View container logs
+docker logs myalpine
+
+# Follow logs continuously
+docker logs -f myalpine
+
+
+###############################################################################
+# INSPECTING CONTAINERS
+###############################################################################
+
+# Detailed container information
+docker inspect myalpine
+
+# Show running processes inside container
+docker top myalpine
+
+# Show container resource usage
+docker stats
+
+# Show container port mappings
+docker port myalpine
+
+
+###############################################################################
+# NETWORKING
+###############################################################################
+
+# List networks
+docker network ls
+
+# Create network
+docker network create mynetwork
+
+# Connect container to network
+docker network connect mynetwork mycontainer
+
+# Disconnect container from network
+docker network disconnect mynetwork mycontainer
+
+# Inspect network
+docker network inspect mynetwork
+
+# Remove network
+docker network rm mynetwork
+
+
+###############################################################################
+# VOLUMES
+###############################################################################
+
+# List volumes
+docker volume ls
+
+# Create volume
+docker volume create myvolume
+
+# Inspect volume
+docker volume inspect myvolume
+
+# Remove volume
+docker volume rm myvolume
+
+# Remove unused volumes
+docker volume prune
+
+
+###############################################################################
+# PORT MAPPING
+###############################################################################
+
+# Map host port 8080 to container port 80
+docker run -d -p 8080:80 nginx
+
+# Multiple port mappings
+docker run -d -p 8080:80 -p 8443:443 nginx
+
+
+###############################################################################
+# MOUNTING FILES/FOLDERS
+###############################################################################
+
+# Mount current directory into container
+docker run -it -v $(pwd):/app alpine
+
+# Named volume mount
+docker run -it -v myvolume:/data alpine
+
+
+###############################################################################
+# COPY FILES
+###############################################################################
+
+# Copy file from host to container
+docker cp file.txt mycontainer:/tmp/
+
+# Copy file from container to host
+docker cp mycontainer:/tmp/file.txt .
+
+
+###############################################################################
+# BUILDING IMAGES
+###############################################################################
+
+# Build image from Dockerfile
+docker build -t myapp .
+
+# Build image with version tag
+docker build -t myapp:v1 .
+
+# List build history
+docker history myapp
+
+
+###############################################################################
+# TAGGING & PUSHING IMAGES
+###############################################################################
+
+# Tag image
+docker tag myapp username/myapp:v1
+
+# Login to Docker Hub
+docker login
+
+# Push image
+docker push username/myapp:v1
+
+# Logout
+docker logout
+
+
+###############################################################################
+# SAVE & LOAD IMAGES
+###############################################################################
+
+# Save image to tar file
+docker save -o myimage.tar myapp
+
+# Load image from tar file
+docker load -i myimage.tar
+
+
+###############################################################################
+# SYSTEM CLEANUP
+###############################################################################
+
+# Remove stopped containers
+docker container prune
+
+# Remove unused networks
+docker network prune
+
+# Remove unused volumes
+docker volume prune
+
+# Remove everything unused
+docker system prune
+
+# Remove everything unused including images
+docker system prune -a
+
+
+###############################################################################
+# EVENTS & MONITORING
+###############################################################################
+
+# Show Docker events in real time
+docker events
+
+# Show live resource usage
+docker stats
+
+
+###############################################################################
+# HELP
+###############################################################################
+
+# General help
+docker --help
+
+# Help for run command
+docker run --help
+
+# Help for image commands
+docker image --help
+
+# Help for container commands
+docker container --help
